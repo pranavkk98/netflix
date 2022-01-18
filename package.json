@@ -1,0 +1,27 @@
+{
+  "name": "netflix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "userFront": "npm start --prefix client",
+    "backend": "npm start --prefix api",
+    "adminFront": "npm start --prefix admin",
+    "dev": "concurrently \"npm run backend\" \"npm run userFront\"",
+    "admin": "concurrently \"npm run backend\" \"npm run adminFront\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranavkk98/netflix.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranavkk98/netflix/issues"
+  },
+  "homepage": "https://github.com/pranavkk98/netflix#readme",
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
