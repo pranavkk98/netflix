@@ -12,7 +12,7 @@ export default function Featured({ type, setGenre }) {
         const res = await axios.get(`/movies/random?type=${type}`, {
           headers: {
             token:
-              "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setContent(res.data[0]);
@@ -26,7 +26,7 @@ export default function Featured({ type, setGenre }) {
   console.log(content);
   return (
     <div className="featured">
-      {type && (
+      {type && content && (
         <div className="category">
           <span>{type === "movies" ? "Movies" : "Series"}</span>
           <select
@@ -51,21 +51,26 @@ export default function Featured({ type, setGenre }) {
           </select>
         </div>
       )}
-      <img src={content.img} alt="" />
-      <div className="info">
-        <img src={content.imgTitle} alt="" />
-        <span className="desc">{content.desc}</span>
-        <div className="buttons">
-          <button className="play">
-            <PlayArrow />
-            <span>Play</span>
-          </button>
-          <button className="more">
-            <InfoOutlined />
-            <span>Info</span>
-          </button>
-        </div>
-      </div>
+      {content && (
+        <>
+          {" "}
+          <img src={content.img} alt="" />
+          <div className="info">
+            <img src={content.imgTitle} alt="" />
+            <span className="desc">{content.desc}</span>
+            <div className="buttons">
+              <button className="play">
+                <PlayArrow />
+                <span>Play</span>
+              </button>
+              <button className="more">
+                <InfoOutlined />
+                <span>Info</span>
+              </button>
+            </div>
+          </div>{" "}
+        </>
+      )}
     </div>
   );
 }
